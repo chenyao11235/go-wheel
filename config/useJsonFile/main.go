@@ -42,7 +42,7 @@ func main() {
         err error
     )
     // 载入配置文件
-    if err = InitConfig("config.json"); err != nil {
+    if err = InitConfig("config.useJson"); err != nil {
         goto ERR
     }
 
