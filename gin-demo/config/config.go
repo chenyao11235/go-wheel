@@ -1,12 +1,10 @@
 package config
 
 import (
-    "log"
     "github.com/fsnotify/fsnotify"
     "github.com/spf13/viper"
-    "google.golang.org/appengine/log"
+    "log"
     "strings"
-    "wheel/gin-demo/logger"
 )
 
 /*viper 读取配置的顺序
