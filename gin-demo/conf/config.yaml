@@ -12,3 +12,8 @@ log:
   log_rotate_size: 500
   log_backup_count: 30
   log_backup_days: 30
+db:
+  name: db_apiserver
+  addr: 10.211.55.5:3306
+  username: root
+  password: cy.89757
