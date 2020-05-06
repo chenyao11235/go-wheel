@@ -17,9 +17,9 @@ func InitLog() {
     now := time.Now()
     hook := &lumberjack.Logger{
         Filename:   fmt.Sprintf("%s/%04d%02d%02d%02d%02d%02d", viper.GetString("logger_dir"), now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second()), //filePath
-        MaxSize:    viper.GetInt("log_rotate_size"),                                                                                                                       // megabytes
-        MaxBackups: viper.GetInt("log_backup_count"),
-        MaxAge:     viper.GetInt("log_rotate_days"), //days
+        MaxSize:    viper.GetInt("log_rotate_size"),    // 每个日志文件的最大的尺寸，单位M                                                                                                                   // megabytes
+        MaxBackups: viper.GetInt("log_backup_count"),   // 最多保存多少个备份
+        MaxAge:     viper.GetInt("log_rotate_days"),    // 最多保存多少天
         Compress:   false,                           // disabled by default
     }
     defer hook.Close()
@@ -30,8 +30,16 @@ func InitLog() {
 
     // 时间格式z
     enConfig.EncodeTime = zapcore.ISO8601TimeEncoder // 指定日期格式
-
+    // 日志级别
     level := zap.InfoLevel
+    switch viper.GetString("logger_level") {
+    case "debug":
+        level = zap.DebugLevel
+    case "info":
+        level = zap.InfoLevel
+    case "error":
+        level = zap.ErrorLevel
+    }
     w := zapcore.AddSync(hook)
     core := zapcore.NewCore(
         zapcore.NewConsoleEncoder(enConfig), //编码器配置
