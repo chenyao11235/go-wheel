@@ -25,7 +25,9 @@ func main() {
     if err := config.Init(*cfg); err != nil {
         panic(err)
     }
+
     logger.InitLog()
+
     gin.SetMode(viper.GetString("runmode"))
     g := gin.New()
 
