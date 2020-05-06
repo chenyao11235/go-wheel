@@ -3,8 +3,8 @@ package config
 import (
     "github.com/fsnotify/fsnotify"
     "github.com/spf13/viper"
-    "log"
     "strings"
+    "wheel/gin-demo/logger"
 )
 
 /*viper 读取配置的顺序
@@ -56,7 +56,6 @@ func (c *Config) initConfig() error {
 func (c *Config) watchConfig() {
     viper.WatchConfig()
     viper.OnConfigChange(func(e fsnotify.Event) {
-        log.Printf("Config file changed: %s", e.Name)
+        logger.Log.Infof("Config file changed: %s", e.Name)
     })
 }
-
