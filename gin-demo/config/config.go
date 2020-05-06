@@ -1,8 +1,10 @@
 package config
 
 import (
+    "log"
     "github.com/fsnotify/fsnotify"
     "github.com/spf13/viper"
+    "google.golang.org/appengine/log"
     "strings"
     "wheel/gin-demo/logger"
 )
@@ -56,6 +58,6 @@ func (c *Config) initConfig() error {
 func (c *Config) watchConfig() {
     viper.WatchConfig()
     viper.OnConfigChange(func(e fsnotify.Event) {
-        logger.Log.Infof("Config file changed: %s", e.Name)
+        log.Printf("Config file changed: %s", e.Name)
     })
 }
