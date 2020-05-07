@@ -10,6 +10,7 @@ import (
     "time"
     "wheel/gin-demo/config"
     "wheel/gin-demo/logger"
+    "wheel/gin-demo/model"
     "wheel/gin-demo/router"
 )
 
@@ -22,11 +23,14 @@ var (
 
 func main() {
     pflag.Parse()
+    // 载入配置文件
     if err := config.Init(*cfg); err != nil {
         panic(err)
     }
-
+    // 初始化日志
     logger.InitLog()
+    // 建立数据库连接
+    model.DB.Init()
 
     gin.SetMode(viper.GetString("runmode"))
     g := gin.New()

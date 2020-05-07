@@ -16,7 +16,8 @@ var Log *zap.SugaredLogger
 func InitLog() {
     now := time.Now()
     hook := &lumberjack.Logger{
-        Filename:   fmt.Sprintf("%s/%04d%02d%02d%02d%02d%02d", viper.GetString("log.logger_dir"), now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second()), //filePath
+        //Filename:   fmt.Sprintf("%s/%04d%02d%02d%02d%02d%02d", viper.GetString("log.logger_dir"), now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second()), //filePath
+        Filename:   fmt.Sprintf("%s/%04d%02d%02d.log", viper.GetString("log.logger_dir"), now.Year(), now.Month(), now.Day()), //filePath
         MaxSize:    viper.GetInt("log.log_rotate_size"),    // 每个日志文件的最大的尺寸，单位M                                                                                                                   // megabytes
         MaxBackups: viper.GetInt("log.log_backup_count"),   // 最多保存多少个备份
         MaxAge:     viper.GetInt("log.log_rotate_days"),    // 最多保存多少天
