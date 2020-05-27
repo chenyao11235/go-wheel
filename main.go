@@ -1,32 +1,14 @@
 package main
 
-import (
-    "fmt"
-)
-
-type MyM struct {
-    i int64
-}
-
-func (c MyM) Sing() {
-    fmt.Println("i am sing...")
-}
-
-type MyN struct {
-    i int64
-}
-
-func (c MyN) Sing() {
-    fmt.Println("i am sing...")
-}
-
-func Test() {
-}
+import "fmt"
 
 func main() {
-    i := 1
-    n := 100
-    for i < n {
-        i = i * 3
-    }
+    var (
+        name string
+        age  int
+    )
+    //n, _ := fmt.Sscanf("polaris 28", "%s%d", &name, &age)
+    // 可以将"polaris 28"中的空格换成"\n"试试
+    n, _ := fmt.Sscanf("polaris\n28", "%s%d", &name, &age)
+    fmt.Println(n, name, age)
 }

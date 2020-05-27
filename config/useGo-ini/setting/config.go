@@ -20,9 +20,9 @@ func init() {
     var (
         err error
     )
-    Cfg, err = ini.Load("app.ini")
+    Cfg, err = ini.Load("app.useGo-ini")
     if err != nil {
-        log.Fatalf("Fail to parse 'app.ini': %v", err)
+        log.Fatalf("Fail to parse 'app.useGo-ini': %v", err)
     }
 
     LoadBase()

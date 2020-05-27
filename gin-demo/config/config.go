@@ -12,7 +12,7 @@ import (
   2. 命令行 flag
   3. 环境变量
   4. 配置文件
-  5. 配置中心：etcd/consul
+  5. 配置中心：etcd-demo/consul-demo
   6. 默认值
 */
 

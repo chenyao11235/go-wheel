@@ -2,7 +2,7 @@ package main
 
 import (
     "fmt"
-    "wheel/config/ini/setting"
+    "wheel/config/useGo-ini/setting"
 )
 
 // 通过setting模块来引用各种配置项

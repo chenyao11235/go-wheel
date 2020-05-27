@@ -14,7 +14,7 @@ func InitArgs() {
 	)
 
 	flag.BoolVar(&isHelp, "h", false, "查看帮助")
-	flag.StringVar(&configFile, "config", "/config.json", "指定配置文件")
+	flag.StringVar(&configFile, "config", "/config.useJsonFile", "指定配置文件")
 
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "需要指定参数, 详见如下: \n")

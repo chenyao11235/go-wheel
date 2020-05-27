@@ -24,9 +24,9 @@ const (
 
 func main() {
 	dsn := fmt.Sprintf("%s:%s@%s(%s:%d)/%s", USERNAME, PASSWORD, NETWORK, SERVER, PORT, DATABASE)
-	DB, err := sql.Open("mysql", dsn)
+	DB, err := sql.Open("mysql-simple", dsn)
 	if err != nil {
-		fmt.Printf("Open mysql failed,err:%v\n", err)
+		fmt.Printf("Open mysql-simple failed,err:%v\n", err)
 		return
 	}
 	DB.SetConnMaxLifetime(100 * time.Second) // 设置最大链接周期，超时自动关闭链接

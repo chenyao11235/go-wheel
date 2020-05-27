@@ -115,12 +115,15 @@ func main() {
     }
 
     for i := 0; i < 20; i++ {
-        _ = pool.Put(&Task{
+        err := pool.Put(&Task{
             Handler: func(v ...interface{}) {
                 fmt.Println(v)
             },
             Params: []interface{}{i},
         })
+        if err != nil {
+            fmt.Println(err)
+        }
     }
     time.Sleep(10 * time.Second)
 }

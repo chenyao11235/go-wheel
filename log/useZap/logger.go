@@ -1,4 +1,4 @@
-package usezap
+package useZap
 
 import (
     "fmt"
