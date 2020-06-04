@@ -3,8 +3,8 @@ package model
 import (
 	"fmt"
 	"gopkg.in/go-playground/validator.v9"
-	"wheel/gin-demo/pkg/auth"
-	"wheel/gin-demo/pkg/constvar"
+    "wheel/go-web-gin/pkg/auth"
+    "wheel/go-web-gin/pkg/constvar"
 )
 
 type UserModel struct {

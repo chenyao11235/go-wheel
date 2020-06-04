@@ -3,9 +3,9 @@ package user
 import (
 	"github.com/gin-gonic/gin"
 	"strconv"
-	. "wheel/gin-demo/handler"
-	"wheel/gin-demo/model"
-	"wheel/gin-demo/pkg/errno"
+    . "wheel/go-web-gin/handler"
+    "wheel/go-web-gin/model"
+    "wheel/go-web-gin/pkg/errno"
 )
 
 func Delete(c *gin.Context) {

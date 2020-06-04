@@ -3,8 +3,8 @@ package service
 import (
 	"fmt"
 	"sync"
-	"wheel/gin-demo/model"
-	"wheel/gin-demo/util"
+    "wheel/go-web-gin/model"
+    "wheel/go-web-gin/util"
 )
 
 // 简单的处理逻辑可以直接放在handler中，如果有比较复杂的逻辑，可以单独放在service层中，保持handler的维护

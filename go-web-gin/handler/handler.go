@@ -3,7 +3,7 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"wheel/gin-demo/pkg/errno"
+    "wheel/go-web-gin/pkg/errno"
 )
 
 type Response struct {

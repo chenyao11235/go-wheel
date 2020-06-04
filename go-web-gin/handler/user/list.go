@@ -2,9 +2,9 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
-	. "wheel/gin-demo/handler"
-	"wheel/gin-demo/pkg/errno"
-	"wheel/gin-demo/service"
+    . "wheel/go-web-gin/handler"
+    "wheel/go-web-gin/pkg/errno"
+    "wheel/go-web-gin/service"
 )
 
 func List(c *gin.Context) {

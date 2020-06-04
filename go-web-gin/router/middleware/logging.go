@@ -8,9 +8,9 @@ import (
 	"io/ioutil"
 	"regexp"
 	"time"
-	"wheel/gin-demo/handler"
-	"wheel/gin-demo/logger"
-	"wheel/gin-demo/pkg/errno"
+    "wheel/go-web-gin/handler"
+    "wheel/go-web-gin/logger"
+    "wheel/go-web-gin/pkg/errno"
 )
 
 type bodyWriter struct {

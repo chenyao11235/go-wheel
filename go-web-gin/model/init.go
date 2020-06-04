@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/spf13/viper"
-	"wheel/gin-demo/logger"
+    "wheel/go-web-gin/logger"
 )
 
 type Database struct {

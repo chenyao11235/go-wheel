@@ -2,11 +2,11 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
-	. "wheel/gin-demo/handler"
-	"wheel/gin-demo/logger"
-	"wheel/gin-demo/model"
-	"wheel/gin-demo/pkg/errno"
-	"wheel/gin-demo/util"
+    . "wheel/go-web-gin/handler"
+    "wheel/go-web-gin/logger"
+    "wheel/go-web-gin/model"
+    "wheel/go-web-gin/pkg/errno"
+    "wheel/go-web-gin/util"
 )
 
 func Create(c *gin.Context) {

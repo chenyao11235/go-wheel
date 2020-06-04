@@ -2,11 +2,11 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
-	. "wheel/gin-demo/handler"
-	"wheel/gin-demo/model"
-	"wheel/gin-demo/pkg/auth"
-	"wheel/gin-demo/pkg/errno"
-	"wheel/gin-demo/pkg/token"
+    . "wheel/go-web-gin/handler"
+    "wheel/go-web-gin/model"
+    "wheel/go-web-gin/pkg/auth"
+    "wheel/go-web-gin/pkg/errno"
+    "wheel/go-web-gin/pkg/token"
 )
 
 func Login(c *gin.Context) {

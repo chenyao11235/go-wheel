@@ -4,9 +4,9 @@ import (
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"wheel/gin-demo/handler/sd"
-	"wheel/gin-demo/handler/user"
-	"wheel/gin-demo/router/middleware"
+    "wheel/go-web-gin/handler/sd"
+    "wheel/go-web-gin/handler/user"
+    "wheel/go-web-gin/router/middleware"
 )
 
 func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {

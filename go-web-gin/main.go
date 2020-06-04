@@ -11,12 +11,12 @@ import (
 	"net/http"
 	"os"
 	"time"
-	"wheel/gin-demo/config"
-	"wheel/gin-demo/logger"
-	"wheel/gin-demo/model"
-	v "wheel/gin-demo/pkg/version"
-	"wheel/gin-demo/router"
-	"wheel/gin-demo/router/middleware"
+    "wheel/go-web-gin/config"
+    "wheel/go-web-gin/logger"
+    "wheel/go-web-gin/model"
+    v "wheel/go-web-gin/pkg/version"
+    "wheel/go-web-gin/router"
+    "wheel/go-web-gin/router/middleware"
 )
 
 // 一条典型的curl命令
