@@ -1,0 +1,5 @@
+- simple 简单构建流式处理(pipeline)
+- generator 流式生成器
+- fan 横向扩展某个stage，提高该stage处理速度
+- orDone 正确判断某个channel是否关闭的方式
+- tee 复制某个channel中的数据到另外的两个channel
