@@ -88,7 +88,7 @@ var (
 	"loadBalancingPolicy": "round_robin",
 	"healthCheckConfig": {
 		"serviceName": ""
-	    }
+	}
     }`
 	service_name = "/service/book/"
 )
