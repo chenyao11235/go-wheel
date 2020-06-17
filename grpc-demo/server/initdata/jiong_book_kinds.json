@@ -1,0 +1,42 @@
+[
+  {
+    "kind_id": 1,
+    "kind_name": "编程语言",
+    "pid": 0
+  },
+  {
+    "kind_id": 2,
+    "kind_name": "PHP",
+    "pid": 1
+  },
+  {
+    "kind_id": 3,
+    "kind_name": "Java",
+    "pid": 1
+  },
+  {
+    "kind_id": 4,
+    "kind_name": "Go",
+    "pid": 1
+  },
+  {
+    "kind_id": 5,
+    "kind_name": "网站开发",
+    "pid": 1
+  },
+  {
+    "kind_id": 6,
+    "kind_name": "Python",
+    "pid": 1
+  },
+  {
+    "kind_id": 7,
+    "kind_name": "其他",
+    "pid": 1
+  },
+  {
+    "kind_id": 8,
+    "kind_name": "c/c++",
+    "pid": 1
+  }
+]

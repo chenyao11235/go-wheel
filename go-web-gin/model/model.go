@@ -26,7 +26,7 @@ type UserList struct {
 	IdMap map[uint64]*UserInfo
 }
 
-// Token represents a JSON web token.
+// Token represents a JSON net-http-web token.
 type Token struct {
 	Token string `json:"token"`
 }

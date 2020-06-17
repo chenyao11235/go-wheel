@@ -1,0 +1,56 @@
+syntax = "proto3";
+//option go_package = "wheel/grpc-demo/proto";
+
+package proto;
+
+
+message BookRequest {
+  int64 book_id = 2;
+}
+
+message BooksRequest {
+  repeated BookRequest books = 1;
+}
+
+message GetBooksByPrice {
+  float min = 1;
+  float max = 2;
+}
+
+message GetBooksByKind {
+  int32 kind_id = 1;
+}
+
+// 单本书，响应
+message BookResponse {
+  int64 id = 1;
+  string name = 2;   // 书名
+  string author = 3; // 作者
+  float price = 4;  // 价格
+  string intro = 5;  // 简介
+  string press = 6;  // 出版社
+  string publish_date = 7;  // 出版日期
+  int32 kind = 8;  // 种类
+}
+
+// 书列表
+message BookListRequest {
+  int32 size = 1;
+}
+
+// 书列表响应
+message BookListResponse {
+  repeated BookResponse books = 1;
+}
+
+
+service BookService {
+  // 根据id获取图书的详细信息(简单模式)
+  rpc GetBook(BookRequest) returns (BookResponse) {};
+  // 根据价格范围获取都有哪些图书（服务端流模式）
+  rpc SearchBookByPrice(GetBooksByPrice) returns (stream BookListResponse) {};
+  // 通过一批图书id一次性获取这些图书的详细信息（客户端流模式）
+  rpc SearchBookByIds(stream BooksRequest) returns (BookListResponse) {};
+  // 根据图书的种类获取图书的信息(双向流模式)
+  rpc SearchBookByKind(stream GetBooksByKind) returns (stream BookListResponse) {};
+}
