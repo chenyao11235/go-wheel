@@ -37,6 +37,7 @@ require (
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.6.3
 	github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271
+	github.com/stretchr/testify v1.6.1
 	github.com/tebeka/strftime v0.1.4 // indirect
 	github.com/teris-io/shortid v0.0.0-20171029131806-771a37caa5cf
 	github.com/willf/pad v0.0.0-20200313202418-172aa767f2a4
