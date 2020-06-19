@@ -5,6 +5,7 @@ import (
     "google.golang.org/grpc/resolver/manual"
 )
 
+
 func NewDefaultResolver() resolver.Builder {
     r, _ := manual.GenerateAndRegisterManualResolver()
     //defer cleanup()
@@ -16,3 +17,6 @@ func NewDefaultResolver() resolver.Builder {
     })
     return r
 }
+
+
+

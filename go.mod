@@ -34,6 +34,7 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	github.com/shirou/gopsutil v2.20.4+incompatible
 	github.com/sirupsen/logrus v1.4.2
+	github.com/spf13/cobra v1.0.0 // indirect
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.6.3
 	github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271
