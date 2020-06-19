@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package proto;
+
+
+message ParseReq {
+
+}
+
+
+message ParseResp {
+
+}
+
+
+service ParsePage {
+    rpc Parse(ParseReq) returns(ParseResp){};
+}
