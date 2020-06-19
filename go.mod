@@ -22,6 +22,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway v1.14.5 // indirect
 	github.com/jehiah/go-strftime v0.0.0-20171201141054-1d33003b3869 // indirect
 	github.com/jinzhu/gorm v1.9.11
+	github.com/joho/godotenv v1.3.0
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/leodido/go-urn v1.2.0 // indirect
 	github.com/lestrrat-go/file-rotatelogs v2.3.0+incompatible

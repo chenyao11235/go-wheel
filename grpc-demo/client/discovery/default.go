@@ -1,4 +1,4 @@
-package my_resolver
+package discovery
 
 import (
     "google.golang.org/grpc/resolver"
