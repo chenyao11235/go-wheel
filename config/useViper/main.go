@@ -1,18 +1,20 @@
 package main
 
 import (
-    "fmt"
-    "github.com/spf13/viper"
-    "time"
-    "wheel/config/useViper/config"
+	"fmt"
+	"time"
+	"wheel/config/useViper/config"
+
+	"github.com/spf13/viper"
 )
 
+// 你这是开什么玩笑
 func main() {
-    config.Init()
+	config.Init()
 
-    fmt.Println(viper.GetString("env"))
-    fmt.Println(viper.GetString("address"))
+	fmt.Println(viper.GetString("env"))
+	fmt.Println(viper.GetString("address"))
 
-    for range time.Tick(time.Second) {
-    }
+	for range time.Tick(time.Second) {
+	}
 }

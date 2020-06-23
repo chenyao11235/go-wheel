@@ -1,14 +1,26 @@
 package linearlist
 
+import "fmt"
+
 //SinglyNode 单向链表节点
 type SinglyNode struct {
 	value interface{}
 	next  *SinglyNode
 }
 
+//GetValue 获取节点的值
+func (n *SinglyNode) GetValue() interface{} {
+	return n.value
+}
+
+//GetNext 获取下一个节点
+func (n *SinglyNode) GetNext() *SinglyNode {
+	return n.next
+}
+
 //Singly 单向链表
 type Singly struct {
-	head   *SinglyNode
+	head   *SinglyNode // 带头链表，链表中的第一个节点是head.next
 	length int
 }
 
@@ -42,6 +54,7 @@ func (s *Singly) insertBefore(p *SinglyNode, value interface{}) bool {
 	}
 	cur := s.head.next
 	pre := s.head
+	// 找到p节点的前一个节点
 	for nil != cur {
 		if cur == p {
 			break
@@ -49,6 +62,7 @@ func (s *Singly) insertBefore(p *SinglyNode, value interface{}) bool {
 		pre = cur
 		cur = cur.next
 	}
+	// 链表中只有一个节点(头节点)
 	if nil == cur {
 		return false
 	}
@@ -60,10 +74,63 @@ func (s *Singly) insertBefore(p *SinglyNode, value interface{}) bool {
 }
 
 //InsterHead 在头部插入节点
-func (s *Singly) InsterHead(value interface{}) {
-	s.head = NewSinglyNode(value)
+func (s *Singly) InsterHead(value interface{}) bool {
+	return s.insertAfter(s.head, value)
 }
 
 //InsertTail 在尾部插入节点
-func (s *Singly) InsertTail() {
+func (s *Singly) InsertTail(value interface{}) bool {
+	curl := s.head
+	for curl.next != nil {
+		curl = curl.next
+	}
+	return s.insertAfter(curl, value)
+}
+
+//FindByIndex 查找指定值的索引
+func (s *Singly) FindByIndex(index int) *SinglyNode {
+	if index >= s.length {
+		return nil
+	}
+
+	cur := s.head.next
+	for i := 0; i < index; i++ {
+		if cur == nil {
+			return nil
+		}
+		cur = cur.next
+	}
+	return cur
+}
+
+//DeleteNode 删除节点
+func (s *Singly) DeleteNode(p *SinglyNode) bool {
+	if p == nil {
+		return false
+	}
+
+	pre := s.head
+	cur := s.head.next
+
+	for cur != nil {
+		if cur == p {
+			pre.next = p.next
+			s.length--
+			return true
+		}
+		pre = cur
+		cur = cur.next
+	}
+	return false
+}
+
+//Print 打印链表
+func (s *Singly) Print() {
+	cur := s.head.next
+	format := ""
+	for cur != nil {
+		format += fmt.Sprintf("=>%+v", cur.GetValue())
+		cur = cur.next
+	}
+	fmt.Println(format)
 }
