@@ -134,3 +134,68 @@ func (s *Singly) Print() {
 	}
 	fmt.Println(format)
 }
+
+//Reverse 链表反转
+func (s *Singly) Reverse() {
+	if s.head == nil || s.head.next == nil || s.head.next.next == nil {
+		return
+	}
+	// 遍历链表，直到pre指向链表的最后一个节点
+	var pre *SinglyNode = nil
+	cur := s.head.next
+	// 这三个变量的关系大概是: cur.next = pre  tmp在遍历的时候是走在最前面的
+	for cur != nil {
+		tmp := cur.next
+		cur.next = pre
+		pre = cur
+		cur = tmp
+	}
+
+	s.head.next = pre
+}
+
+//HashCycle 判断链表时候有环(两个节点的next互相指向对方)
+func (s *Singly) HashCycle() bool {
+	if s.head != nil {
+		slow := s.head.next
+		fast := s.head.next
+		for slow == nil || fast == nil {
+			slow = slow.next
+			fast = fast.next.next
+			if slow == fast {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+//MergeSortedSingly 合并两个有序链表
+func (s *Singly) MergeSortedSingly(l1, l2 *Singly) *Singly {
+	if l1 == nil || l1.head == nil || l1.head.next == nil {
+		return l2
+	}
+	if l2 == nil || l2.head == nil || l2.head.next == nil {
+		return l1
+	}
+	l := &Singly{head: &SinglyNode{}}
+	cur := l.head
+	cur1 := l1.head.next
+	cur2 := l2.head.next
+	for cur1 != nil && cur2 != nil {
+		if cur1.value.(int) > cur2.value.(int) {
+			cur.next = cur2
+			cur2 = cur2.next
+		} else {
+			cur.next = cur1
+			cur1 = cur1.next
+		}
+		cur = cur.next
+	}
+	if cur1 != nil {
+		cur.next = cur1
+	} else if cur2 != nil {
+		cur.next = cur2
+	}
+	return l
+}

@@ -55,3 +55,14 @@ func TestIsPalindrome(t *testing.T) {
 	t.Log(isPalindrome(l))
 	t.Log(isPalindrome1(l))
 }
+
+func TestReverse(t *testing.T) {
+	l := NewSingly()
+	l.InsertTail(0)
+	l.InsertTail(1)
+	l.InsertTail(2)
+	l.Print()
+
+	l.Reverse()
+	l.Print()
+}
