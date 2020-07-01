@@ -3,7 +3,7 @@ package linearlist
 import "testing"
 
 func TestInsertHead(t *testing.T) {
-	l := NewSingly()
+	l := NewLinearList()
 	for i := 0; i < 10; i++ {
 		l.InsterHead(i + 1)
 	}
@@ -11,7 +11,7 @@ func TestInsertHead(t *testing.T) {
 }
 
 func TestInsertTail(t *testing.T) {
-	l := NewSingly()
+	l := NewLinearList()
 	for i := 0; i < 10; i++ {
 		l.InsertTail(i + 1)
 	}
@@ -19,7 +19,7 @@ func TestInsertTail(t *testing.T) {
 }
 
 func TestFindByIndex(t *testing.T) {
-	l := NewSingly()
+	l := NewLinearList()
 	for i := 0; i < 10; i++ {
 		l.InsertTail(i + 1)
 	}
@@ -31,7 +31,7 @@ func TestFindByIndex(t *testing.T) {
 }
 
 func TestDeleteNode(t *testing.T) {
-	l := NewSingly()
+	l := NewLinearList()
 	for i := 0; i < 10; i++ {
 		l.InsertTail(i + 1)
 	}
@@ -43,7 +43,7 @@ func TestDeleteNode(t *testing.T) {
 }
 
 func TestIsPalindrome(t *testing.T) {
-	l := NewSingly()
+	l := NewLinearList()
 	l.InsertTail(0)
 	l.InsertTail(1)
 	// l.InsertTail(1)
@@ -57,7 +57,7 @@ func TestIsPalindrome(t *testing.T) {
 }
 
 func TestReverse(t *testing.T) {
-	l := NewSingly()
+	l := NewLinearList()
 	l.InsertTail(0)
 	l.InsertTail(1)
 	l.InsertTail(2)

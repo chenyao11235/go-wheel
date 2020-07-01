@@ -9,7 +9,7 @@ import (
 */
 
 // 自己先实现一种最笨,最暴力的方法, 用两个列表分别保存链表的前后两个部分
-func isPalindrome(l *Singly) bool {
+func isPalindrome(l *LinearList) bool {
 	if l.length == 0 || l.length == 1 {
 		return false
 	}
@@ -41,7 +41,7 @@ func isPalindrome(l *Singly) bool {
 }
 
 // 方法1:开一个栈存放链表示链表的前半段
-func isPalindrome1(l *Singly) bool {
+func isPalindrome1(l *LinearList) bool {
 	if l.length == 0 || l.length == 1 {
 		return false
 	}
@@ -66,6 +66,6 @@ func isPalindrome1(l *Singly) bool {
 }
 
 // 方法2:
-func isPalindrome2(l *Singly) {
+func isPalindrome2(l *LinearList) {
 
 }

@@ -2,44 +2,44 @@ package linearlist
 
 import "fmt"
 
-//SinglyNode 单向链表节点
-type SinglyNode struct {
+//Node 单向链表节点
+type Node struct {
 	value interface{}
-	next  *SinglyNode
+	next  *Node
 }
 
 //GetValue 获取节点的值
-func (n *SinglyNode) GetValue() interface{} {
+func (n *Node) GetValue() interface{} {
 	return n.value
 }
 
 //GetNext 获取下一个节点
-func (n *SinglyNode) GetNext() *SinglyNode {
+func (n *Node) GetNext() *Node {
 	return n.next
 }
 
-//Singly 单向链表
-type Singly struct {
-	head   *SinglyNode // 带头链表，链表中的第一个节点是head.next
+//LinearList 单向链表
+type LinearList struct {
+	head   *Node // 带头链表，链表中的第一个节点是head.next
 	length int
 }
 
-//NewSinglyNode 创建一个单向链表节点
-func NewSinglyNode(value interface{}) *SinglyNode {
-	return &SinglyNode{
+//NewNode 创建一个单向链表节点
+func NewNode(value interface{}) *Node {
+	return &Node{
 		value: value,
 		next:  nil,
 	}
 }
 
-//NewSingly 创建一个单向链表
-func NewSingly() *Singly {
-	return &Singly{NewSinglyNode(0), 0}
+//NewLinearList 创建一个单向链表
+func NewLinearList() *LinearList {
+	return &LinearList{NewNode(0), 0}
 }
 
 //insertAfter 在某个节点之后插入一个节点
-func (s *Singly) insertAfter(p *SinglyNode, value interface{}) bool {
-	newNode := NewSinglyNode(value)
+func (s *LinearList) insertAfter(p *Node, value interface{}) bool {
+	newNode := NewNode(value)
 	oldNext := p.next
 	p.next = newNode
 	newNode.next = oldNext
@@ -48,7 +48,7 @@ func (s *Singly) insertAfter(p *SinglyNode, value interface{}) bool {
 }
 
 //insertBefore 在某个节点之前插入一个节点
-func (s *Singly) insertBefore(p *SinglyNode, value interface{}) bool {
+func (s *LinearList) insertBefore(p *Node, value interface{}) bool {
 	if p == s.head {
 		return false
 	}
@@ -66,7 +66,7 @@ func (s *Singly) insertBefore(p *SinglyNode, value interface{}) bool {
 	if nil == cur {
 		return false
 	}
-	newNode := NewSinglyNode(value)
+	newNode := NewNode(value)
 	pre.next = newNode
 	newNode.next = cur
 	s.length++
@@ -74,12 +74,12 @@ func (s *Singly) insertBefore(p *SinglyNode, value interface{}) bool {
 }
 
 //InsterHead 在头部插入节点
-func (s *Singly) InsterHead(value interface{}) bool {
+func (s *LinearList) InsterHead(value interface{}) bool {
 	return s.insertAfter(s.head, value)
 }
 
 //InsertTail 在尾部插入节点
-func (s *Singly) InsertTail(value interface{}) bool {
+func (s *LinearList) InsertTail(value interface{}) bool {
 	curl := s.head
 	for curl.next != nil {
 		curl = curl.next
@@ -88,7 +88,7 @@ func (s *Singly) InsertTail(value interface{}) bool {
 }
 
 //FindByIndex 查找指定值的索引
-func (s *Singly) FindByIndex(index int) *SinglyNode {
+func (s *LinearList) FindByIndex(index int) *Node {
 	if index >= s.length {
 		return nil
 	}
@@ -104,7 +104,7 @@ func (s *Singly) FindByIndex(index int) *SinglyNode {
 }
 
 //DeleteNode 删除节点
-func (s *Singly) DeleteNode(p *SinglyNode) bool {
+func (s *LinearList) DeleteNode(p *Node) bool {
 	if p == nil {
 		return false
 	}
@@ -125,7 +125,7 @@ func (s *Singly) DeleteNode(p *SinglyNode) bool {
 }
 
 //Print 打印链表
-func (s *Singly) Print() {
+func (s *LinearList) Print() {
 	cur := s.head.next
 	format := ""
 	for cur != nil {
@@ -136,12 +136,12 @@ func (s *Singly) Print() {
 }
 
 //Reverse 链表反转
-func (s *Singly) Reverse() {
+func (s *LinearList) Reverse() {
 	if s.head == nil || s.head.next == nil || s.head.next.next == nil {
 		return
 	}
 	// 遍历链表，直到pre指向链表的最后一个节点
-	var pre *SinglyNode = nil
+	var pre *Node = nil
 	cur := s.head.next
 	// 这三个变量的关系大概是: cur.next = pre  tmp在遍历的时候是走在最前面的
 	for cur != nil {
@@ -155,7 +155,7 @@ func (s *Singly) Reverse() {
 }
 
 //HashCycle 判断链表时候有环(两个节点的next互相指向对方)
-func (s *Singly) HashCycle() bool {
+func (s *LinearList) HashCycle() bool {
 	if s.head != nil {
 		slow := s.head.next
 		fast := s.head.next
@@ -170,15 +170,15 @@ func (s *Singly) HashCycle() bool {
 	return false
 }
 
-//MergeSortedSingly 合并两个有序链表
-func (s *Singly) MergeSortedSingly(l1, l2 *Singly) *Singly {
+//MergeSortedLinearList 合并两个有序链表
+func (s *LinearList) MergeSortedLinearList(l1, l2 *LinearList) *LinearList {
 	if l1 == nil || l1.head == nil || l1.head.next == nil {
 		return l2
 	}
 	if l2 == nil || l2.head == nil || l2.head.next == nil {
 		return l1
 	}
-	l := &Singly{head: &SinglyNode{}}
+	l := &LinearList{head: &Node{}}
 	cur := l.head
 	cur1 := l1.head.next
 	cur2 := l2.head.next
@@ -198,4 +198,33 @@ func (s *Singly) MergeSortedSingly(l1, l2 *Singly) *Singly {
 		cur.next = cur2
 	}
 	return l
+}
+
+//DeleteBottomN 删除倒数第n个元素： 用两个指针，通过n设计好两个指针之间的差多少个节点，然后遍历整个链表
+func (s *LinearList) DeleteBottomN(n int) {
+	if s == nil || s.head.next == nil {
+		return
+	}
+	pre := s.head
+	for i := 1; i <= n && pre != nil; i++ {
+		pre = pre.next
+	}
+	if nil == pre {
+		return
+	}
+	cur := s.head
+	// 直到遍历到最后一个节点
+	for pre.next != nil {
+		pre = pre.next
+		cur = cur.next
+	}
+	cur.next = cur.next.next
+}
+
+//FindMiddleNode 获取中间节点
+func (s *LinearList) FindMiddleNode() *Node {
+	if s.head.next == nil || s.head == nil {
+		return nil
+	}
+	return nil
 }
