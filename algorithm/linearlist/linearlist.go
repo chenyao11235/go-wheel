@@ -223,8 +223,17 @@ func (s *LinearList) DeleteBottomN(n int) {
 
 //FindMiddleNode 获取中间节点
 func (s *LinearList) FindMiddleNode() *Node {
-	if s.head.next == nil || s.head == nil {
+	if nil == s.head || nil == s.head.next {
 		return nil
 	}
-	return nil
+	if nil == s.head.next.next {
+		return s.head.next
+	}
+
+	slow, fast := s.head, s.head
+	for nil != fast && nil != fast.next {
+		slow = slow.next
+		fast = fast.next.next
+	}
+	return slow
 }
