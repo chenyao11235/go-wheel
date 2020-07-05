@@ -1,5 +1,17 @@
 package stack
 
+//Node 节点
+type Node struct {
+	value interface{}
+	next  *Node
+}
+
+//LinkedList 链表
+type LinkedList struct {
+	head   *Node
+	length int
+}
+
 //BaseOnLinkedList 基于链表实现的栈
 type BaseOnLinkedList struct {
 }
