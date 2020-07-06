@@ -12,4 +12,6 @@ type Stack interface {
 	Top() interface{}
 	//Flush 清空
 	Flush()
+	//打印
+	Print()
 }
