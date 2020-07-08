@@ -7,16 +7,12 @@ HtmlDownloader 类用来通过 URL 获取网页；
 Document 表示网页文档，后续的网页内容抽取、分词、索引都是以此为处理对象
 */
 
-//HTMLRequest 请求
-type HTMLRequest struct {
-	url string
-}
-
 //NetworkTransporter 传输
 type NetworkTransporter struct {
 }
 
-func (n *NetworkTransporter) send(r *HTMLRequest) {
+func (n *NetworkTransporter) send(r *HTMLRequest) []byte {
+	return nil
 }
 
 //HTMLDownloader 获取网页
@@ -24,9 +20,30 @@ type HTMLDownloader struct {
 	transporter NetworkTransporter
 }
 
-func (hd *HTMLDownloader) download(url string) {
+func (hd *HTMLDownloader) download(url string) *Html {
 	r := &HTMLRequest{
 		url: url,
 	}
-	hd.transporter.send(r)
+	rawHTML := hd.transporter.send(r)
+
+	return &Html{rawHtml: rawHTML}
+}
+
+//Document 文档
+type Document struct {
+	html *Html
+	url  string
+}
+
+// 从 document中提取有用的信息
+func (d *Document) extract() {
+}
+
+//NewDocument 使用工厂函数
+func NewDocument(url string, downloader *HTMLDownloader) *Document {
+	html := downloader.download(url)
+	return &Document{
+		url:  url,
+		html: html,
+	}
 }
