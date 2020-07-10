@@ -1,0 +1,31 @@
+{
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "database": "jiong",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "localhost",
+            "password": "123456",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": "localhost",
+            "username": "root"
+        },
+        {
+            "database": "beta_platform",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "rong_beta",
+            "password": "@&rmC*Z3rA",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": "rm-bp184t8170nch1bj07o.mysql.rds.aliyuncs.com",
+            "username": "root"
+        }
+    ]
+}
