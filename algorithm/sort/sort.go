@@ -55,8 +55,3 @@ func SelectSort(a []int) {
 func FastSort(t *testing.T) {
 
 }
-
-//MergeSort 归并排序
-func MergeSort(t *testing.T) {
-
-}

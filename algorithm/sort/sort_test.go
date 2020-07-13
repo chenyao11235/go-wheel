@@ -19,3 +19,15 @@ func TestSelectSort(t *testing.T) {
 	SelectSort(a)
 	t.Log(a)
 }
+
+func TestMergeSort(t *testing.T) {
+	a := []int{1, 10, 5, 6, 1, 2, 3}
+	MergeSort(a)
+	t.Log(a)
+}
+
+func TestQuickSort(t *testing.T) {
+	a := []int{1, 10, 5, 6, 1, 2, 3}
+	QuickSort(a)
+	t.Log(a)
+}
