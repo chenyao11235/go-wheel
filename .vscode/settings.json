@@ -26,6 +26,45 @@
             "previewLimit": 50,
             "server": "rm-bp184t8170nch1bj07o.mysql.rds.aliyuncs.com",
             "username": "root"
+        },
+        {
+            "database": "develop_platform",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "rong_develop",
+            "password": "@&rmC*Z3rA",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": " rm-bp184t8170nch1bj07o.mysql.rds.aliyuncs.com",
+            "username": "root"
+        },
+        {
+            "database": "dev_platform",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "rong_dev",
+            "password": "@&rmC*Z3rA",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": "rm-bp184t8170nch1bj07o.mysql.rds.aliyuncs.com",
+            "username": "root"
+        },
+        {
+            "database": "platform",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "rong",
+            "password": "kEvQhCjthVE73xY",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": "rm-bp15t1pt9787u84mk4o.mysql.rds.aliyuncs.com",
+            "username": "chenyao"
         }
     ]
 }
