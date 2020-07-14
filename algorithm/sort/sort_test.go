@@ -31,3 +31,15 @@ func TestQuickSort(t *testing.T) {
 	QuickSort(a)
 	t.Log(a)
 }
+
+func TestBucketSort(t *testing.T) {
+	a := []int{1, 10, 5, 6, 1, 2, 3}
+	BucketSort(a)
+	t.Log(a)
+}
+
+func TestCountSort(t *testing.T) {
+	a := []int{1, 10, 5, 6, 1, 2, 3}
+	CountSort(a)
+	t.Log(a)
+}
