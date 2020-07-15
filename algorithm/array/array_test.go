@@ -32,3 +32,10 @@ func TestArray(t *testing.T) {
 	}
 	a.Print()
 }
+
+func TestPivotIndex(t *testing.T) {
+	arr := []int{1, 7, 3, 6, 5, 6}
+	assert.Equal(t, 3, pivotIndex(arr), "index should be 3")
+	arr = []int{1, 7, 3, 6}
+	assert.Equal(t, -1, pivotIndex(arr), "index should be 3")
+}

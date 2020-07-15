@@ -4,6 +4,8 @@ package factory
 在简单工厂中，使用if判断来返回不同的对象，严格来说是违背开闭原则的
 为了让代码更加符合开闭原则，可以利用多态来实现
 golang中没有继承，使用组合
+
+工厂方法适用于 不同的struct的构造过程比较复杂，这些不同的struct不适合放在同一个工厂函数中，而需要各自有自己的工厂函数
 */
 
 //IRuleConfigParserMethodFactory 工厂接口
