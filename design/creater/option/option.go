@@ -48,6 +48,7 @@ var (
 	}
 )
 
+//NewOption 工厂函数
 func NewOption(opts ...OptionFunc) *Option {
 	opt := defaultOption
 	for _, o := range opts {
@@ -61,7 +62,7 @@ func main() {
 	opt := NewOption(
 		WithA("hello"),
 		WithB("world"),
-		WithC("!"))
-
+		WithC("!"),
+	)
 	fmt.Println(opt)
 }

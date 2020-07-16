@@ -17,3 +17,10 @@ func TestRecursiveBinarySearch(t *testing.T) {
 	assert.Equal(t, 8, RecursiveBinarySearch(arr, 8), "should be 8")
 	assert.Equal(t, -1, RecursiveBinarySearch(arr, 17), "should be -1")
 }
+
+func TestSearchInsert(t *testing.T) {
+	arr := []int{1, 3, 5, 6}
+	assert.Equal(t, 1, searchInsert(arr, 2), "")
+	assert.Equal(t, 0, searchInsert(arr, 0), "")
+	assert.Equal(t, 4, searchInsert(arr, 10), "")
+}

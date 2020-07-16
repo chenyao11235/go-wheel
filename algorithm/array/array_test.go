@@ -39,3 +39,10 @@ func TestPivotIndex(t *testing.T) {
 	arr = []int{1, 7, 3, 6}
 	assert.Equal(t, -1, pivotIndex(arr), "index should be 3")
 }
+
+func TestSearchInsert(t *testing.T) {
+	arr := []int{1, 2, 3, 6, 8, 11}
+	assert.Equal(t, 0, searchInsert(arr, 0), "should be 0")
+	assert.Equal(t, 2, searchInsert(arr, 3), "should be 2")
+	assert.Equal(t, 6, searchInsert(arr, 15), "should be 6")
+}
