@@ -46,3 +46,9 @@ func TestSearchInsert(t *testing.T) {
 	assert.Equal(t, 2, searchInsert(arr, 3), "should be 2")
 	assert.Equal(t, 6, searchInsert(arr, 15), "should be 6")
 }
+
+func TestMerge(t *testing.T) {
+	arr := [][]int{{1, 3}, {2, 6}, {8, 10}, {15, 18}}
+	marr := merge(arr)
+	t.Log(marr)
+}

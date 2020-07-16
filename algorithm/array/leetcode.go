@@ -3,6 +3,8 @@ package array
 /* 做过的leetcode中的题目
  */
 
+import "sort"
+
 // 寻找数据的中心索引
 func pivotIndex(arr []int) int {
 	n := len(arr)
@@ -33,4 +35,30 @@ func searchInsert(nums []int, target int) int {
 		}
 	}
 	return n
+}
+
+//给出一个区间的集合，请合并所有重叠的区间。
+func merge(intervals [][]int) [][]int {
+	// 先排序
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i][0] < intervals[j][0]
+	})
+	merged := make([][]int, 0)
+	// 把第一个数组放到merged中
+	merged = append(merged, intervals[0])
+
+	for i := 1; i < len(intervals); i++ {
+		m := merged[len(merged)-1]
+		c := intervals[i]
+
+		if c[0] > m[1] {
+			merged = append(merged, c)
+			continue
+		}
+
+		if c[1] > m[1] {
+			m[1] = c[1]
+		}
+	}
+	return merged
 }
