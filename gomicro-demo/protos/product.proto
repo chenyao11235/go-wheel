@@ -1,0 +1,20 @@
+syntax = "proto3";
+package  protos;
+
+message ProdModel{
+    // @inject_tag:json:"id"
+    int32 ID =1;
+    // @inject_tag:json:"name"
+    string Name=2;
+}
+message ProdsRequest{
+    int32 size=1;
+}
+message ProdListResponse{
+    repeated ProdModel data=1;
+}
+
+
+service ProductService {
+    rpc GetProdList(ProdsRequest) returns(ProdListResponse){};
+}
