@@ -5,9 +5,13 @@ package bridge
 */
 
 const (
+	//SEVERE 正常
 	SEVERE = iota
+	//URGENCY 紧急
 	URGENCY
+	//NORMAL 普通
 	NORMAL
+	//TRIVIAL 轻微
 	TRIVIAL
 )
 
