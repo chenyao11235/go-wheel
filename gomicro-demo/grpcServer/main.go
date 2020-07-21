@@ -10,6 +10,9 @@ import (
 	"github.com/micro/go-micro/registry/etcd"
 )
 
+/*基于go-micro实现一个grpc的微服务
+ */
+
 //ProductService 基于grpc实现的商品服务
 type ProductService struct {
 }
@@ -32,12 +35,13 @@ func main() {
 	registry := etcd.NewRegistry(
 		registry.Addrs("127.0.0.1:2379"),
 	)
-	service := micro.NewService(
+	grpcServer := micro.NewService(
 		micro.Name("productservice"),
 		micro.Address(":8011"),
 		micro.Registry(registry),
 	)
-	service.Init()
-	protos.RegisterProductServiceHandler(service.Server(), new(ProductService))
-	service.Run()
+
+	grpcServer.Init()
+	protos.RegisterProductServiceHandler(grpcServer.Server(), new(ProductService))
+	grpcServer.Run()
 }

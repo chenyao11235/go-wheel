@@ -10,6 +10,9 @@ import (
 	"github.com/micro/go-micro/web"
 )
 
+/*基于go-micro实现一个http的微服务
+ */
+
 //ProductsRequests 商品请求
 type ProductsRequest struct {
 	Size int `form:"size"`
@@ -33,7 +36,7 @@ func main() {
 			c.JSON(200, gin.H{"data": models.NewProductList(req.Size)})
 		})
 	}
-	web := web.NewService(
+	httpServer := web.NewService(
 		web.Name("productservice"),
 		// web.Address(":8001"),
 		web.Handler(ginRouter),
@@ -42,6 +45,6 @@ func main() {
 	// 使用Init方法可以使得程序具备命令行的功能
 	// 通过命令行的方式指定addr，而不是在NewService中
 	// 命令行参数是 --server_address :8001
-	web.Init()
-	web.Run()
+	httpServer.Init()
+	httpServer.Run()
 }

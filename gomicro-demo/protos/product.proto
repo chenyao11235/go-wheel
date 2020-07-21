@@ -8,9 +8,11 @@ message ProdModel{
     string Name=2;
 }
 message ProdsRequest{
+    // @inject_tag:json:"size",form:"size"
     int32 size=1;
 }
 message ProdListResponse{
+    // @inject_tag:json:"data"
     repeated ProdModel data=1;
 }
 
