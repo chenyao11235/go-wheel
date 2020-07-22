@@ -19,6 +19,8 @@ func main() {
 	// 客户端也可以作为服务，爱注册不注册，看是否需要，这里就不注册了
 	grpcService := micro.NewService(
 		micro.Name("productservice.client"),
+		// 拦截器 可以有多个 类似于gin中的middleware 添加日志功能
+		micro.WrapClient(NewLogWrapper),
 	)
 	// 这一步其实就是连接到grpc server
 	prodService := protos.NewProductService("productservice", grpcService.Client())
