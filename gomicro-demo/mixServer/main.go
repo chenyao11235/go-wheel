@@ -21,6 +21,7 @@ func main() {
 		micro.Name("productservice.client"),
 		// 拦截器 可以有多个 类似于gin中的middleware 添加日志功能
 		micro.WrapClient(NewLogWrapper),
+		micro.WrapClient(NewProdsWrapper),
 	)
 	// 这一步其实就是连接到grpc server
 	prodService := protos.NewProductService("productservice", grpcService.Client())

@@ -3,7 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
+	"strconv"
+	"wheel/gomicro-demo/protos"
 
+	"github.com/afex/hystrix-go/hystrix"
 	"github.com/micro/go-micro/client"
 	"github.com/micro/go-micro/metadata"
 )
@@ -24,4 +27,53 @@ func (l *logWrapper) Call(ctx context.Context, req client.Request, rsp interface
 //NewLogWrapper 新建
 func NewLogWrapper(c client.Client) client.Client {
 	return &logWrapper{c}
+}
+
+//ProdsWrapper GetProdList的熔断功能的封装
+type ProdsWrapper struct {
+	client.Client
+}
+
+func defaultWrapProds(rsp interface{}) {
+	prods := make([]*protos.ProdModel, 0)
+	for i := 0; i < 5; i++ {
+		prods = append(prods, newProd(10+int32(i), strconv.Itoa(10+i)))
+	}
+
+	res := rsp.(*protos.ProdListResponse)
+	res.Data = prods
+}
+
+//DefaultData 通用降级数据
+func DefaultData(rsp interface{}) {
+	switch t := rsp.(type) {
+	case *protos.ProdDetailResponse:
+		t.Data = newProd(10, "降级商品")
+	case *protos.ProdListResponse:
+		defaultWrapProds(rsp)
+	default:
+	}
+}
+
+//Call 调用
+func (w *ProdsWrapper) Call(ctx context.Context, req client.Request, rsp interface{}, opts ...client.CallOption) error {
+	cmdName := req.Service() + "." + req.Endpoint()
+	config := hystrix.CommandConfig{
+		Timeout: 1000,
+	}
+
+	hystrix.ConfigureCommand(cmdName, config)
+
+	return hystrix.Do(cmdName, func() error {
+		return w.Client.Call(ctx, req, rsp)
+	}, func(e error) error {
+		DefaultData(rsp)
+		// defaultWrapProds(rsp)
+		return nil
+	})
+}
+
+//NewProdsWrapper 新建
+func NewProdsWrapper(c client.Client) client.Client {
+	return &ProdsWrapper{Client: c}
 }

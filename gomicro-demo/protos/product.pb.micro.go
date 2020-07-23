@@ -34,6 +34,7 @@ var _ server.Option
 // Client API for ProductService service
 
 type ProductService interface {
+	GetProdDetail(ctx context.Context, in *ProdDetailRequest, opts ...client.CallOption) (*ProdDetailResponse, error)
 	GetProdList(ctx context.Context, in *ProdsRequest, opts ...client.CallOption) (*ProdListResponse, error)
 }
 
@@ -55,6 +56,16 @@ func NewProductService(name string, c client.Client) ProductService {
 	}
 }
 
+func (c *productService) GetProdDetail(ctx context.Context, in *ProdDetailRequest, opts ...client.CallOption) (*ProdDetailResponse, error) {
+	req := c.c.NewRequest(c.name, "ProductService.GetProdDetail", in)
+	out := new(ProdDetailResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *productService) GetProdList(ctx context.Context, in *ProdsRequest, opts ...client.CallOption) (*ProdListResponse, error) {
 	req := c.c.NewRequest(c.name, "ProductService.GetProdList", in)
 	out := new(ProdListResponse)
@@ -68,11 +79,13 @@ func (c *productService) GetProdList(ctx context.Context, in *ProdsRequest, opts
 // Server API for ProductService service
 
 type ProductServiceHandler interface {
+	GetProdDetail(context.Context, *ProdDetailRequest, *ProdDetailResponse) error
 	GetProdList(context.Context, *ProdsRequest, *ProdListResponse) error
 }
 
 func RegisterProductServiceHandler(s server.Server, hdlr ProductServiceHandler, opts ...server.HandlerOption) error {
 	type productService interface {
+		GetProdDetail(ctx context.Context, in *ProdDetailRequest, out *ProdDetailResponse) error
 		GetProdList(ctx context.Context, in *ProdsRequest, out *ProdListResponse) error
 	}
 	type ProductService struct {
@@ -84,6 +97,10 @@ func RegisterProductServiceHandler(s server.Server, hdlr ProductServiceHandler, 
 
 type productServiceHandler struct {
 	ProductServiceHandler
+}
+
+func (h *productServiceHandler) GetProdDetail(ctx context.Context, in *ProdDetailRequest, out *ProdDetailResponse) error {
+	return h.ProductServiceHandler.GetProdDetail(ctx, in, out)
 }
 
 func (h *productServiceHandler) GetProdList(ctx context.Context, in *ProdsRequest, out *ProdListResponse) error {

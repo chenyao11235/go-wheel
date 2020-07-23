@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"strconv"
+	"time"
 	"wheel/gomicro-demo/protos"
 
 	"github.com/micro/go-micro"
@@ -19,15 +20,28 @@ type ProductService struct {
 
 //GetProdList  获取商品列表
 func (s *ProductService) GetProdList(ctx context.Context, req *protos.ProdsRequest, rsp *protos.ProdListResponse) error {
+	time.Sleep(time.Second * 3)
 	prods := make([]*protos.ProdModel, 0)
 	var i int32
 	for i = 0; i < req.Size; i++ {
 		prods = append(prods, &protos.ProdModel{
 			ID:   100 + i,
-			Name: strconv.Itoa(100 + int(i)),
+			Name: "pname" + strconv.Itoa(100+int(i)),
 		})
 	}
 	rsp.Data = prods
+	return nil
+}
+
+//GetProdDetail 获取商品详细
+func (s *ProductService) GetProdDetail(ctx context.Context, req *protos.ProdDetailRequest, rsp *protos.ProdDetailResponse) error {
+	time.Sleep(time.Second * 3)
+	id := req.GetID()
+	prod := &protos.ProdModel{
+		ID:   id,
+		Name: "pname" + strconv.Itoa(int(id)),
+	}
+	rsp.Data = prod
 	return nil
 }
 

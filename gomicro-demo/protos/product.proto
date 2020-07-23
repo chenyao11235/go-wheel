@@ -11,6 +11,17 @@ message ProdsRequest{
     // @inject_tag:json:"size",form:"size"
     int32 size=1;
 }
+
+message ProdDetailRequest{
+    // @inject_tag:json:"id",form:"id",uri:"id"
+    int32 ID=1;
+}
+
+message ProdDetailResponse{
+    // @inject_tag:json:"data",form:"data"
+    ProdModel data=1;
+}
+
 message ProdListResponse{
     // @inject_tag:json:"data"
     repeated ProdModel data=1;
@@ -18,5 +29,6 @@ message ProdListResponse{
 
 
 service ProductService {
+    rpc GetProdDetail(ProdDetailRequest) returns(ProdDetailResponse){};
     rpc GetProdList(ProdsRequest) returns(ProdListResponse){};
 }
