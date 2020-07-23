@@ -19,6 +19,7 @@ func TestBinaryTree(t *testing.T) {
 	tree.Add(14)
 
 	tree.MidOrder()
+
 	assert.Equal(t, 1, tree.FindMinValue().value, "")
 	assert.Equal(t, 14, tree.FindMaxValue().value, "")
 	assert.Equal(t, 6, tree.Find(6).value, "")
