@@ -1,36 +1,36 @@
-package _proxy
+package proxy
 
 import (
-    "fmt"
-    "time"
+	"fmt"
+	"time"
 )
 
 /*  需求：
     需要统计登陆操作要耗费多长时间
 */
 
-// 统一接口
+//IUser 统一接口
 type IUser interface {
-    login()
+	login()
 }
 
-// 被代理类
+//UserController 被代理类
 type UserController struct {
 }
 
 func (u *UserController) login() {
 }
 
-// 代理类
+//UserControllerProxy 代理类  通过组合的方式实现代理模式
 type UserControllerProxy struct {
-    userController UserController
+	userController UserController
 }
 
 func (up *UserControllerProxy) login() {
-    startTime := time.Now()
+	startTime := time.Now()
 
-    up.userController.login()
+	up.userController.login()
 
-    costTime := time.Since(startTime)
-    fmt.Println(costTime)
+	costTime := time.Since(startTime)
+	fmt.Println(costTime)
 }

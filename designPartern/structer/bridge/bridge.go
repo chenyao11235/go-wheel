@@ -1,5 +1,9 @@
 package bridge
 
+import (
+	"fmt"
+)
+
 /*一个告警功能类，有不同的告警级别(紧急，普通，预警)，告警方式(邮件，短信，微信)
 不通的告警级别对应不同的告警方式
 */
@@ -54,7 +58,7 @@ type TelephoneMsgSender struct {
 }
 
 func (s *TelephoneMsgSender) send(message string) {
-	//....
+	fmt.Println("电话短信通知...")
 }
 
 //其他的Sender就不一一实现了，差不多类似

@@ -5,6 +5,7 @@ go 1.14
 require (
 	github.com/OneOfOne/xxhash v1.2.8
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
+	github.com/afex/hystrix-go v0.0.0-20180502004556-fa1af6a1f4f5
 	github.com/coreos/etcd v3.3.22+incompatible
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/dustin/go-humanize v1.0.0 // indirect
@@ -32,6 +33,7 @@ require (
 	github.com/mattn/go-isatty v0.0.12 // indirect
 	github.com/micro/go-micro v1.18.0
 	github.com/micro/go-plugins v1.5.1
+	github.com/micro/micro v1.18.0 // indirect
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/mitchellh/mapstructure v1.1.2
 	github.com/natefinch/lumberjack v2.0.0+incompatible
