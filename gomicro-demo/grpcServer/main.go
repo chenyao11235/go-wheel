@@ -50,7 +50,8 @@ func main() {
 		registry.Addrs("127.0.0.1:2379"),
 	)
 	grpcServer := micro.NewService(
-		micro.Name("productservice"),
+		// micro.Name("productservice"),
+		micro.Name("api.product.com.test"),
 		micro.Address(":8011"),
 		micro.Registry(registry),
 	)

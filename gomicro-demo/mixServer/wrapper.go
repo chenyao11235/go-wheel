@@ -44,7 +44,7 @@ func defaultWrapProds(rsp interface{}) {
 	res.Data = prods
 }
 
-//DefaultData 通用降级数据
+//DefaultData 通用降级数据 适用用于GetProdList和GetProdDetail
 func DefaultData(rsp interface{}) {
 	switch t := rsp.(type) {
 	case *protos.ProdDetailResponse:
@@ -59,7 +59,10 @@ func DefaultData(rsp interface{}) {
 func (w *ProdsWrapper) Call(ctx context.Context, req client.Request, rsp interface{}, opts ...client.CallOption) error {
 	cmdName := req.Service() + "." + req.Endpoint()
 	config := hystrix.CommandConfig{
-		Timeout: 1000,
+		Timeout:                1000, // 请求超时 毫秒级
+		RequestVolumeThreshold: 2,    // 发生多少次降级之后进行百分比的计算
+		ErrorPercentThreshold:  50,   // 触发熔断开关的 降级请求的百分比
+		SleepWindow:            5000, // 多少时间之后重新尝试请求 正常服务
 	}
 
 	hystrix.ConfigureCommand(cmdName, config)
@@ -68,7 +71,6 @@ func (w *ProdsWrapper) Call(ctx context.Context, req client.Request, rsp interfa
 		return w.Client.Call(ctx, req, rsp)
 	}, func(e error) error {
 		DefaultData(rsp)
-		// defaultWrapProds(rsp)
 		return nil
 	})
 }

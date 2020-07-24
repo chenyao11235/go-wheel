@@ -11,3 +11,11 @@ POST  http://{{host}}/v1/prods HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
 size=5
+
+###
+POST  http://{{hostname}}:8080/test/ProductService/getproddetail HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 2333
+}
