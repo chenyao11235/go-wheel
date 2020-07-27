@@ -19,8 +19,10 @@ require (
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/lestrrat-go/file-rotatelogs v2.3.0+incompatible
 	github.com/lestrrat-go/strftime v1.0.1 // indirect
+	github.com/micro/go-micro v1.18.0
+	github.com/micro/go-micro/v2 v2.9.1
 	github.com/micro/go-plugins/v2 v2.0.0 // indirect
-	github.com/micro/micro/v2 v2.9.3 // indirect
+	github.com/micro/micro/v2 v2.9.2-0.20200724154133-c8dfef1004ab // indirect
 	github.com/mitchellh/mapstructure v1.1.2
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/natefinch/lumberjack v2.0.0+incompatible
@@ -35,12 +37,12 @@ require (
 	github.com/tebeka/strftime v0.1.4 // indirect
 	go.etcd.io/etcd v3.3.22+incompatible
 	go.uber.org/zap v1.14.0
-	golang.org/x/crypto v0.0.0-20200510223506-06a226fb4e37 // indirect
 	golang.org/x/net v0.0.0-20200520182314-0ba52f642ac2 // indirect
 	golang.org/x/text v0.3.2 // indirect
 	golang.org/x/time v0.0.0-20191024005414-555d28b269f0
 	golang.org/x/tools v0.0.0-20200117065230-39095c1d176c // indirect
 	google.golang.org/grpc v1.29.1
+	google.golang.org/protobuf v1.25.0
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
 	sigs.k8s.io/yaml v1.2.0 // indirect
