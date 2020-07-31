@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package proto;
+
+message BookKind{
+    // @inject_tag:json:"id",form:"id",uri:"id"
+    int32 ID = 1;
+    // @inject_tag:json:"name",form:"name",uri:"name"
+    string Name = 2;
+}
+
+message GetBookDetailReq{
+       // @inject_tag:json:"id",form:"id",uri:"id"
+       int64 ID = 1; 
+}
+
+message GetBookDetailRsp{
+    // @inject_tag:json:"id"
+    int64 ID = 1;
+    // @inject_tag:json:"name"
+    string Name = 2;
+    // @inject_tag:json:"price
+    int32 Price = 3;
+    // @inject_tag:json:"author
+    string Author = 4;
+    // @inject_tag:json:"intro"
+    string Intro = 5;
+    // @inject_tag:json:"press"
+    string Press = 6;
+    // @inject_tag:json:"book_kind"
+    BookKind BookKind = 7;
+}
+
+
+message GetBookListReq{
+    // @inject_tag:json:"size",form:"size",uri:"size"
+    int64 Size = 1; 
+}
+
+message GetBookListRsp{
+    // @inject_tag:json:"code"
+    int32 Code= 1;
+    // @inject_tag:json:"message"
+    string Message = 2;
+    // @inject_tag:json:"data"
+    repeated GetBookDetailRsp Data = 3;
+}
+
+
+service Book{
+    rpc GetBookDetail(GetBookDetailReq)returns(GetBookDetailRsp){}
+    rpc GetBookList(GetBookListReq)returns(GetBookListRsp){}
+}

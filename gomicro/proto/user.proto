@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package proto;
+
+message RegisterRequest{
+    // @inject_tag:json:"name",form:"name"
+    string name = 1;
+    // @inject_tag:json:"name",form:"name"
+    string email = 2;
+    // @inject_tag:json:"password",form:"password"
+    string password = 3;
+}
+
+
+message RegisterResponse{
+    // @inject_tag:json:"code"
+    int32 code = 1;
+    // @inject_tag:json:"message"
+    string message = 2;
+}
+
+
+message LoginRequest{
+    // @inject_tag:json:"name",form:"name"
+    string name = 1;
+    // @inject_tag:json:"password",form:"password"
+    string password = 2;
+}
+
+
+message LoginResponse{
+    // @inject_tag:json:"code"
+    int32 code = 1;
+    // @inject_tag:json:"message"
+    string message = 2;
+}
+
+service User{
+    rpc Register(RegisterRequest) returns(RegisterResponse){}
+    rpc Login(LoginRequest) returns(LoginResponse){}
+}

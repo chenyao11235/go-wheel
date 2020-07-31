@@ -1,2 +1,4 @@
 build:
-	protoc --proto_path=. --micro_out=. --go_out=. proto/greeter.proto
+	protoc -I. --go_out=./ --micro_out=./ proto/*.proto
+	protoc-go-inject-tag -input=./proto/user.pb.go 
+	protoc-go-inject-tag -input=./proto/book.pb.go
