@@ -28,8 +28,8 @@ func (h *Heap) Insert(value int) error {
 	h.length++
 	// 注意 index为0的位置是不存储数据的
 	h.data[h.length] = value
-	// 堆化，自下而上
 
+	// 堆化，自下而上
 	index := h.length - 1
 
 	for index/2 > 0 && h.data[index] > h.data[index/2] {
@@ -50,9 +50,10 @@ func (h *Heap) RemoveTop() {
 	if h.length == 1 {
 		return
 	}
-
+	// 把最后一个元素置于堆顶
 	h.data[1] = h.data[h.length]
 	h.length--
+	// 然后从上往下进行堆化
 	heapifyUpToDown(h.data, h.length)
 }
 

@@ -28,5 +28,4 @@ func TestBinaryTree(t *testing.T) {
 	tree.Delete(10)
 	tree.Delete(8)
 	tree.MidOrder()
-
 }

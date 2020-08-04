@@ -231,10 +231,20 @@ func (t *BinarySearchTree) Delete(value int) {
 
 }
 
+//PreOrder 前序遍历
+func (t *BinarySearchTree) PreOrder() {
+
+}
+
 //MidOrder 中序遍历
 func (t *BinarySearchTree) MidOrder() {
 	if t.root == nil {
 		return
 	}
 	t.root.midOrder()
+}
+
+//InOrder 后序遍历
+func (t *BinarySearchTree) InOrder() {
+
 }
