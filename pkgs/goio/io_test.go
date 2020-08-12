@@ -102,3 +102,7 @@ func TestSeek(t *testing.T) {
 	r, _, _ = reader.ReadRune()
 	t.Logf("%c\n", r)
 }
+
+func TestIOCopy(t *testing.T) {
+	io.Copy(os.Stdout, strings.NewReader("hello."))
+}
