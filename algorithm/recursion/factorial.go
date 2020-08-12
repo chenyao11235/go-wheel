@@ -1,16 +1,18 @@
 package recursion
 
-// 迭代实现阶乘
+//Fac 迭代实现阶乘
 type Fac struct {
 	val map[int]int
 }
 
+//NewFactorial 新建
 func NewFactorial(n int) *Fac {
 	return &Fac{
 		make(map[int]int, n),
 	}
 }
 
+//Factorial 阶乘计算
 func (fac *Fac) Factorial(n int) int {
 	if fac.val[n] != 0 {
 		return fac.val[n]
@@ -26,6 +28,7 @@ func (fac *Fac) Factorial(n int) int {
 	}
 }
 
+//Print 打印
 func (fac *Fac) Print(n int) {
 	println(fac.val[n])
 }
